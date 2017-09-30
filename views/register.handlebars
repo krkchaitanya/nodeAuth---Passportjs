@@ -1,5 +1,11 @@
 <h2 class="page-header">Register</h2>
-<form method="post" action="/users/login">
+{{#if errors}}
+{{#each errors}}
+ <div class="alert alert-danger">{{msg}}
+ </div>
+{{/each}}
+{{/if}}
+<form method="post" action="/users/register">
   <div class="from-group">
     <label>Name</label>
     <input type="text" class="form-control" name="name"placeholder="Name"/>
@@ -20,7 +26,6 @@
     <label>ConfirmPassword</label>
     <input type="text" class="form-control"name="password2" placeholder="Password"/>
   </div>
-
   <br />
-  <button class="btn btn-info" type="submit">Login</button>
+  <button class="btn btn-info" type="submit">Register</button>
 </form>

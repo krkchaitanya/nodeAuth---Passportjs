@@ -31,13 +31,31 @@
 
       <div class="row ">
         <div class="col-lg-12">
+          {{#if success_msg}}
+               <div class="alert alert-success">
+                 {{success_msg}}
+               </div>
+          {{/if}}
+          {{#if error_msg}}
+               <div class="alert alert-danger">
+                 {{error_msg}}
+               </div>
+          {{/if}}
+          {{#if error}}
+               <div class="alert alert-danger">
+                 {{error}}
+               </div>
+          {{/if}}
               {{{body}}}
         </div>
 
 
 
     </div> <!-- /container -->
-
+    <script
+ src="https://code.jquery.com/jquery-3.2.1.min.js"
+ integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+ crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   </body>
 </html>
