@@ -1,21 +1,22 @@
-# ..........Passport Authentication.............modules needed.........
+## ..........Passport Authentication.............modules needed.........
 
 
-bcryptjs
-body-parser
-cookie-parser
-passport
-passport-local
-connect-flash
-express-handlebars
-express-sessions
-express-validator
-mongodb
-mongoose
+-bcryptjs
+-body-parser
+-cookie-parser
+-passport
+-passport-local
+-connect-flash
+-express-handlebars
+-express-sessions
+-express-validator
+-mongodb
+-mongoose
 
 
 
 ## -------->>>>>Get Dependencies loaded
+
 
 
 ```
