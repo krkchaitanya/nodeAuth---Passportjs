@@ -5,6 +5,8 @@ router.get("/",ensureAuthenticated,(req,res)=>{
   res.render('index');
 });
 
+// ....Middleware functionality...
+// ....secure path to dashboard... 
 function ensureAuthenticated(req,res,next){
   if(req.isAuthenticated()){
     return next();

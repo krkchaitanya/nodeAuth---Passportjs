@@ -4,14 +4,17 @@ var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
 var User = require('../models/user');
 
+// ......register...get....
 router.get("/register",(req,res)=>{
   res.render('register');
 });
 
+// .......login..get data......
 router.get("/login",(req,res)=>{
   res.render('login');
 });
 
+// ....registration..posting data to DB.........
 router.post("/register",(req,res)=>{
   var name=req.body.name;
   var email=req.body.email;
@@ -47,6 +50,8 @@ if(errors){
 }
 });
 
+
+// .........passport..LocalStrategy.....authentication.....username....password....
 passport.use(new LocalStrategy(
   function(username, password, done) {
    User.getUserByUsername(username, function(err, user){
@@ -66,6 +71,8 @@ passport.use(new LocalStrategy(
    });
   }));
 
+
+// ...serailizer...deserializeUser.....
   passport.serializeUser(function(user, done) {
     done(null, user.id);
   });
@@ -76,12 +83,15 @@ passport.use(new LocalStrategy(
     });
   });
 
+
+// .....login....passport authenticate...
 router.post('/login',
   passport.authenticate('local',{successRedirect:"/",failureRedirect:'/users/login',failureFlash:true}),
   function(req, res) {
       res.redirect('/');
   });
 
+// ......logout.......redirect.............
   router.get('/logout', function(req, res){
   	req.logout();
 
