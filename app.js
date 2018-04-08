@@ -9,9 +9,27 @@ const session = require('express-session');
 var passport=require("passport");
 var LocalStrategy=require("passport-local").Strategy;
 var mongo=require("mongodb");
+var cors=require("cors");
+const config=require("./config/database");
+
+// mongoose database createConnection
 var mongoose=require("mongoose");
-mongoose.connect("mongodb://localhost/loginapp");
-var db=mongoose.connection;
+mongoose.connect(config.database);
+
+// on Connection
+mongoose.connection.on('connected',()=>{
+  console.log("Connected to Database"+ config.database);
+});
+
+// on error
+mongoose.connection.on('error',(err)=>{
+  console.log("DB Conncetion ERROR:"+err);
+})
+
+
+
+// mongoose.connect("mongodb://localhost/loginapp");
+// var db=mongoose.connection;
 
 var routes=require("./routes/index");
 var users=require("./routes/users");
@@ -27,6 +45,7 @@ app.set('view engine', 'handlebars');
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(cookieParser());
+app.use(cors());
 
 // set static folder
 app.use(express.static(path.join(__dirname,"public")));
